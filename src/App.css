@@ -50,6 +50,11 @@ button{
 .App-link {
   color: #61dafb;
 }
+.card{
+  width: 15rem;
+  margin:5px;
+   height:22rem
+}
 section{
   display: flex;
 justify-content: space-around;

@@ -3,8 +3,8 @@ import "./App.css";
 import Input from "./components/common/Input/Input";
 import Dropdown from "./components/common/Dropdown/Dropdown";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Card from "./components/common/Card/card";
+import { getAllPokemons } from "./components/utills/apiCall";
 
 function App() {
   const [searchData, setSearchData] = useState();
@@ -15,7 +15,7 @@ function App() {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
-    getAllPokemons(offset, 20);
+    getAllPokemons(offset, 20, setData);
   }, [offset]);
 
   useEffect(() => {
@@ -26,30 +26,6 @@ function App() {
       setData(filterData);
     }
   }, [type]);
-
-  const getPokemonData = async (result) => {
-    const pokemonArr = [];
-
-    await Promise.all(
-      result.map((pokemonItem) => {
-        return axios
-          .get(`https://pokeapi.co/api/v2/pokemon/${pokemonItem.name}`)
-          .then((result) => {
-            pokemonArr.push(result.data);
-          });
-      })
-    );
-
-    pokemonArr.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0));
-
-    setData(pokemonArr);
-  };
-  const getAllPokemons = async (offset, limit) => {
-    const response = await axios
-      .get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
-      .catch((err) => console.log("Error:", err));
-    getPokemonData(response.data.results);
-  };
 
   const handleModal = (data) => {
     setModal(data);
@@ -76,6 +52,7 @@ function App() {
       )
     );
   };
+
   return (
     <div className="App">
       <header className="App-header">

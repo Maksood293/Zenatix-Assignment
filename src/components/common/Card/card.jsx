@@ -10,7 +10,7 @@ function card({data,handleModal,modal, details, handleDetails }) {
   return (
     <>
      {data.map((dataItem,index)=>(
-      <div class="card" style={{width: "15rem", margin:"5px", height:"22rem"}} key={index}>
+      <div class="card"  key={index}>
           <img src={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${dataItem.id}.svg`} class="card-img-top" style={{height:"170px"}} alt="..."/>
           <div class="card-body">
             <h5 class="card-title">{dataItem.name}</h5>
