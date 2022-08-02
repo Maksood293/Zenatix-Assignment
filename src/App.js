@@ -60,23 +60,23 @@ const handleSearch=(e)=>{
 }
 
 const search=(row)=> {
-  return row.filter(
+  return row && row.filter(
         (el) =>
           el.name.toLowerCase().indexOf(searchData.toLowerCase()) > -1 
-      );}
-
+      )
+    }
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="header-logo" alt="logo" />
         <div className='header-inputs'>
-          <Input handleChange={handleSearch} type="text" label="Search" placeholder="Search By Name"/>
+          <Input handleChange={handleSearch} type="text" label="Search" placeholder="Search By Name" />
           <Dropdown handleChange={handleDropdownChange} labelName="Type"/>
         </div>
         
       </header>
       <section>
-      {data && <Card data={data} handleModal={handleModal} modal={modal} handleDetails={handleDetails} details={details}/>}
+      {data && <Card data={searchData? search(data):data} handleModal={handleModal} modal={modal} handleDetails={handleDetails} details={details}/>}
       </section>
     </div>
   );

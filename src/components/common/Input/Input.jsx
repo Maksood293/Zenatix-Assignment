@@ -10,7 +10,6 @@ function Input({ id, label, type, placeholder, handleChange, value, message }) {
         name={id}
         placeholder={placeholder}
         onChange={handleChange}
-        
       />
       {message?.length > 0 && <small>{message}</small>}
     </div>
