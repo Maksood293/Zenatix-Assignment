@@ -1,8 +1,8 @@
 import React from "react";
 
-function Dropdown({ studentDetail, handleChange, labelName }) {
+function Dropdown({ handleChange, labelName }) {
   const types= [
-    "all types", "grass", "bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"
+     "grass", "bug", "fire",  "normal",  "water"
   ]
   return (
     <div class="form-control">
@@ -10,9 +10,11 @@ function Dropdown({ studentDetail, handleChange, labelName }) {
       <select
         class="form-select"
         aria-label="Default select example"
-        
         onChange={(e) => handleChange(e)}
       >
+        <option>
+           Select Type
+        </option>
         {types?.map((item) => {
           return <option>{item}</option>;
         })}

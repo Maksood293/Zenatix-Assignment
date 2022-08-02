@@ -11,10 +11,21 @@ function App() {
   const [data, setData]=useState();
   const [modal, setModal]= useState()
   const [details,setDetails]=useState()
+  const [type, setType]=useState()
 
   useEffect(()=>{
-    getAllPokemons(0, 20);
+      getAllPokemons(0, 20);
   },[])
+
+  
+  useEffect(()=>{
+if(type && type !== 'Select Type'){
+  const filterData = data.filter((item)=>
+         item.types[0].type.name ===type
+  )
+  setData(filterData)
+}
+  },[type])
 
   
 
@@ -46,15 +57,20 @@ const getAllPokemons = async (offset, limit) => {
 
 }
 
+
 const handleModal=(data)=>{
    setModal(data)
 }
+
 const handleDetails=(itemDetails)=>{
   setDetails(itemDetails)
 }
+
 const handleDropdownChange=(e)=>{
   console.log(e.target.value)
+  setType(e.target.value)
 }
+
 const handleSearch=(e)=>{
   setSearchData(e.target.value)
 }
@@ -65,6 +81,7 @@ const search=(row)=> {
           el.name.toLowerCase().indexOf(searchData.toLowerCase()) > -1 
       )
     }
+console.log("type",type)
   return (
     <div className="App">
       <header className="App-header">
