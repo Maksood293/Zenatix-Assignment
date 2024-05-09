@@ -16,7 +16,7 @@ function card({data,handleModal,modal, details, handleDetails }) {
             <h5 class="card-title">{dataItem.name}</h5>
              <h6 class="card-title">{dataItem.types[0].type.name}</h6>
              <p class="card-text">{dataItem.id}</p> 
-             <a onClick={()=>handleData(dataItem)} href="#"  class="btn btn-primary">Details</a> 
+             <button onClick={()=>handleData(dataItem)} class="btn btn-primary">Details</button> 
             </div>
      </div>
     ))}
