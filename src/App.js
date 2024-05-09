@@ -25,7 +25,7 @@ function App() {
       );
       setData(filterData);
     }
-  }, [type]);
+  }, [type,data]);
 
   const handleModal = (data) => {
     setModal(data);
