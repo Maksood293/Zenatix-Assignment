@@ -80,7 +80,7 @@ function App() {
       </section>
       <footer className="App-footer">
         <button onClick={() => (offset > 0 ? setOffset(offset - 20) : null)}>
-          Previou
+          Previous
         </button>
         <button onClick={() => setOffset(offset + 20)}>Next</button>
       </footer>
